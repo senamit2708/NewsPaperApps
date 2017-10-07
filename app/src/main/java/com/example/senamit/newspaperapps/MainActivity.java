@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public String QUERY = "q";
     public String name = "debate";
     public String APIKEY = "api-key";
-    public String KEY = "test";
+    public String KEY = "aef7f093-8dd8-48b2-94c7-4a2f0ec3005c";
 
     Uri buildUri = null;
+    public  int number = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +50,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         SearchView searchView = (SearchView)findViewById(R.id.search_bar);
         searchView.setOnQueryTextListener(this);
 
-        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY,name).appendQueryParameter(APIKEY, KEY).build();
 
-        Log.i(LOG_TAG, "builduri createde with value "+ buildUri.toString());
+      //  buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(APIKEY, KEY).build();
+
+
         ArrayList<NewsItems> newsItemsArrayList = new ArrayList<NewsItems>();
         Log.i(LOG_TAG, "arraylist onject created");
 
@@ -62,22 +64,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 //        newsItemsArrayList.add(new NewsItems("i m ","a monle","india times",R.drawable.images));
 
 
-
-
 //        Log.i(LOG_TAG, "list of array list "+newsItemsArrayList.get(0).getNewsHeadline());
 
         recyclerAdapter = new RecyclerAdapter(new ArrayList<NewsItems>());
         Log.i(LOG_TAG, "object of recycleview is created");
-         recycerView = (RecyclerView)findViewById(R.id.recycler_view);
+            recycerView = (RecyclerView) findViewById(R.id.recycler_view);
         Log.i(LOG_TAG, "recylceveiw is created");
         recycerView.setLayoutManager(new LinearLayoutManager(this));
         Log.i(LOG_TAG, "setlayout manager");
         recycerView.setHasFixedSize(true);
-        Log.i(LOG_TAG,"has fixed size");
+        Log.i(LOG_TAG, "has fixed size");
 //        recycerView.setAdapter(recyclerAdapter);
 //        Log.i(LOG_TAG, "setAdapter called");
 
-        getLoaderManager().initLoader(0, null, this);
+
 
 
     }
@@ -108,12 +108,27 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         name = query;
         Log.i(LOG_TAG, "the query is "+ name);
+        fun1();
+
+
+
 
         return true;
     }
 
+    private void fun1() {
+        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(APIKEY, KEY).build();
+        Log.i(LOG_TAG, "builduri createde with value " + buildUri.toString());
+
+
+        number++;
+        Log.i(LOG_TAG, "counting is  "+number);
+        getLoaderManager().initLoader(number, null, this);
+
+    }
+
     @Override
     public boolean onQueryTextChange(String s) {
-        return false;
+        return true;
     }
 }
