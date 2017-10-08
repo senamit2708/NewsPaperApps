@@ -69,6 +69,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
         holder.newsHeadline.setText(newsItemsList.get(position).getNewsHeadline());
+        //here i dont want to show link of news so i put it into comment section
 //        holder.newsDescription.setText(newsItemsList.get(position).getNewsDescription());
         final  Uri link = Uri.parse(newsItemsList.get(position).getNewsDescription());
         holder.newsSource.setText(newsItemsList.get(position).getNewsSource());
