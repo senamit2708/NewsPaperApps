@@ -75,14 +75,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 //        TextView toolbar_title = (TextView)toolbar.findViewById(R.id.toolbar_title);
 
-//        Button button1 = (Button)findViewById(R.id.button1);
-//        button1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this,SearchResult.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button button1 = (Button)findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,WebViewActivity.class);
+                startActivity(intent);
+            }
+        });
 //
 //        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(APIKEY, KEY).build();
 //        Log.i(LOG_TAG, "builduri createde with value " + buildUri.toString());

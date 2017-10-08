@@ -79,9 +79,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, link);
-
-                context.startActivity(websiteIntent);
+//                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, link);
+//
+//                context.startActivity(websiteIntent);
+                Intent intent = new Intent(context, WebViewActivity.class);
+                intent.putExtra("key",link.toString());
+                Log.i(LOG_TAG, "the link we r sending is "+link.toString());
+                context.startActivity(intent);
             }
         });
 
