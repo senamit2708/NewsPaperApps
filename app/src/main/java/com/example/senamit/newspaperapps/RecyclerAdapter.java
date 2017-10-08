@@ -1,6 +1,8 @@
 package com.example.senamit.newspaperapps;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +31,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public static final String LOG_TAG = RecyclerAdapter.class.getSimpleName();
 
     List<NewsItems>newsItemsList;
+    Context context;
 
     //constructoe is created so that we can get the array list from the calling class arraylist..to populate it into view...
     //as we know adapter is used to be a bridge between data(list) and View ...so here araylist is taken
@@ -63,13 +66,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     //position is the row number or arraylist[position]
     //now we will join both of them to get the populaetd result on screen
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
 
         holder.newsHeadline.setText(newsItemsList.get(position).getNewsHeadline());
-        holder.newsDescription.setText(newsItemsList.get(position).getNewsDescription());
+//        holder.newsDescription.setText(newsItemsList.get(position).getNewsDescription());
+        final  Uri link = Uri.parse(newsItemsList.get(position).getNewsDescription());
         holder.newsSource.setText(newsItemsList.get(position).getNewsSource());
         //setimage resource accept int value..thats why its used
         holder.newsThumbnail.setImageResource(newsItemsList.get(position).getNewsThumbnail());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, link);
+
+                context.startActivity(websiteIntent);
+            }
+        });
 
         Log.i(LOG_TAG, "inside onbindviewholder");
     }
@@ -101,6 +114,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             newsDescription = itemView.findViewById(R.id.newsDescription);
             newsSource = itemView.findViewById(R.id.newsSource);
             newsThumbnail=itemView.findViewById(R.id.newsThumbnail);
+
+            context = itemView.getContext();
 
             Log.i(LOG_TAG, "Inside viewholder constructo");
         }

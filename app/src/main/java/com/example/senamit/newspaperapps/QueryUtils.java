@@ -123,7 +123,7 @@ public class QueryUtils {
 
             JSONObject jsonItemObject = jsonArrayResults.optJSONObject(i);
             newsHeadline = jsonItemObject.optString("webTitle");
-            newsDescription = jsonItemObject.optString("type");
+            newsDescription = jsonItemObject.optString("webUrl");
             newsSource = jsonItemObject.optString("webPublicationDate");
 
 

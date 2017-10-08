@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search_button"
+        app:actionViewClass="android.widget.SearchView"
+        android:title="@string/search_title"
+        android:icon="@drawable/search2"
+        app:showAsAction="collapseActionView|ifRoom" />
+
+
+</menu>
+
+
+    <!--https://stackoverflow.com/questions/27049294/searchview-doesnt-work-since-app-compat-->
+
+    <!--Laurenswuyts since you started using the support library, some attributes now have to be defined with a -->
+    <!--custom namespace. You have that namespace defined in your menu file. Some more info can be found in the docs. –-->
+    <!--https://developer.android.com/training/custom-views/create-view.html#customattr-->
+
+<!--how to add image of differnt resolution  ..just go to drawable -&#45;&#45;right click then new ..image assets and -->
+    <!--action bar and tab icons....and its done..select the image-->
