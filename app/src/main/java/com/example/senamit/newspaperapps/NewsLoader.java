@@ -1,7 +1,16 @@
 package com.example.senamit.newspaperapps;
 
-import android.content.AsyncTaskLoader;
+//import android.content.AsyncTaskLoader;
+
+
+
+
+
+
+
+
 import android.content.Context;
+import android.support.v4.content.AsyncTaskLoader;
 
 import org.json.JSONException;
 
