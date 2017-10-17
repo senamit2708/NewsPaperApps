@@ -1,43 +1,38 @@
 package com.example.senamit.newspaperapps;
 
-import android.graphics.Bitmap;
-import android.media.Image;
-import android.widget.ImageView;
-
 /**
  * Created by senamit on 7/10/17.
  */
 
 public class NewsItems {
 
-    private String NewsHeadline;
-    private String newsDescription;
-    private String NewsSource;
-    //her for image i use int for sometime ..because R.drwablw is int...whatever R holds..it hold in int formate
-    private int newsThumbnail;
+    private String newsHeadline;
+    private String newsUrl;
+    private String newsPublishDate;
+    private String sectionName;
 
 
-    public NewsItems(String newsHeadline, String newsDescription, String newsSource, int newsThumbnail) {
-        NewsHeadline = newsHeadline;
-        this.newsDescription = newsDescription;
-        NewsSource = newsSource;
-        this.newsThumbnail = newsThumbnail;
+    public NewsItems(String newsHeadline, String newsUrl, String newsPublishDate, String sectionName) {
+        this.newsHeadline = newsHeadline;
+        this.newsUrl = newsUrl;
+        this.newsPublishDate = newsPublishDate;
+        this.sectionName = sectionName;
+
     }
 
     public String getNewsHeadline() {
-        return NewsHeadline;
+        return newsHeadline;
     }
 
-    public String getNewsDescription() {
-        return newsDescription;
+    public String getNewsUrl() {
+        return newsUrl;
     }
 
-    public String getNewsSource() {
-        return NewsSource;
+    public String getNewsPublishDate() {
+        return newsPublishDate;
     }
 
-
-    public int getNewsThumbnail() {
-        return newsThumbnail;
+    public String getSectionName() {
+        return sectionName;
     }
 }

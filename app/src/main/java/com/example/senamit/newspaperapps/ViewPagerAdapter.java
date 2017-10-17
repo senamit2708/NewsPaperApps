@@ -13,16 +13,9 @@ import java.util.List;
  */
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
-
     public static final String LOG_TAG = ViewPagerAdapter.class.getSimpleName();
-
-
     List<Fragment> fragmentList = new ArrayList<Fragment>();
-    List<String>fragmentTitle = new ArrayList<String>();
-
-
-
-
+    List<String> fragmentTitle = new ArrayList<String>();
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -38,18 +31,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
-
-    public void addFragment(Fragment fragment, String name){
-
+    public void addFragment(Fragment fragment, String name) {
         fragmentList.add(fragment);
         fragmentTitle.add(name);
-        Log.i(LOG_TAG, "fragment is added");
-
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return  fragmentTitle.get(position);
+        return fragmentTitle.get(position);
     }
-
 }

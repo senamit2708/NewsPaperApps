@@ -2,4 +2,7 @@
     <string name="app_name">NewsPaperApps</string>
     <string name="search_title">search_title</string>
     <string name="search_hint">News topic</string>
+    <string name="interntAlertTitle">Alert Message</string>
+    <string name="internetAlertMessage">No internet connection</string>
+    <string name="firealert">ok</string>
 </resources>

@@ -2,46 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_margin="20dp"
-   >
+    android:orientation="vertical">
 
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_bright"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@android:color/holo_blue_bright">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/newsThumbnail"/>
-
+            android:padding="10dp">
 
             <TextView
+                android:id="@+id/newsHeadline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/newsHeadline"/>
+                android:textStyle="bold"
+                android:textSize="20sp"/>
 
             <TextView
+                android:id="@+id/newsUrl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/newsDescription"/>
+                android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/newsPublishDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/newsSource"/>
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sectionName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-</android.support.v7.widget.CardView>
-
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
