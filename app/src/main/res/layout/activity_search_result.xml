@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@android:color/white"
     tools:context="com.example.senamit.newspaperapps.SearchResult">
 
     <include
@@ -21,7 +22,6 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
         android:scrollbars="vertical">
 
     </android.support.v7.widget.RecyclerView>

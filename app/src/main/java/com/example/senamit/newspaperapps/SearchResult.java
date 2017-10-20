@@ -36,12 +36,22 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
     RecyclerAdapter recyclerAdapter;
 
     @Override
+    public void onBackPressed() {
+
+       Intent intent = new Intent(SearchResult.this, MainActivity.class);
+        startActivity(intent);
+        Log.i(LOG_TAG, "Inside back button");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         name = intent.getStringExtra("key");
         recyclerAdapter = new RecyclerAdapter(new ArrayList<NewsItems>());
@@ -49,6 +59,11 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
         recycerView.setLayoutManager(new LinearLayoutManager(this));
         recycerView.setHasFixedSize(true);
         loaderRecycleNews();
+
+
+
+
+
     }
 
     public void loaderRecycleNews() {

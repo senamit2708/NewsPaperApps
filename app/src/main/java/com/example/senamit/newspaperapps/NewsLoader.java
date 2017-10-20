@@ -2,6 +2,7 @@ package com.example.senamit.newspaperapps;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 
 import org.json.JSONException;
 
@@ -29,11 +30,16 @@ public class NewsLoader extends AsyncTaskLoader {
     @Override
     public List<NewsItems> loadInBackground() {
         if (url == null) {
+            Log.i(LOG_TAG, "url is null");
             return null;
         }
         List<NewsItems> newsItemsList = null;
         try {
+            Log.i(LOG_TAG,"inside load in background");
             newsItemsList = QueryUtils.fetchNewsRequest(url);
+           if (newsItemsList==null){
+               return null;
+           }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

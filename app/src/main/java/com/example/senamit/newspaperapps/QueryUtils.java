@@ -103,6 +103,9 @@ public class QueryUtils {
         }
         URL url = CreateUrl(requestUrl);
         String jsonResponse = httpJsonArrayCreater(url);
+        if (jsonResponse==null){
+            return null;
+        }
         ArrayList<NewsItems> newsItemsArrayList = extractFeatureFromJson(jsonResponse);
         return newsItemsArrayList;
     }
