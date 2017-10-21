@@ -6,4 +6,7 @@
     <string name="internetAlertMessage">No internet connection</string>
     <string name="firealert">ok</string>
     <string name="amit">Amit header</string>
+    <string name="internetMessage">No Internet Available</string>
+    <string name="alertTitle">Alert</string>
+    <string name="alertButton">Ok</string>
 </resources>
