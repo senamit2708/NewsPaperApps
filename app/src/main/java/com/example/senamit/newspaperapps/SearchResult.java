@@ -122,3 +122,4 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
 
 }
 
+

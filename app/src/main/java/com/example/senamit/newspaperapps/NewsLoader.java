@@ -45,3 +45,4 @@ public class NewsLoader extends AsyncTaskLoader {
         return newsItemsList;
     }
 }
+

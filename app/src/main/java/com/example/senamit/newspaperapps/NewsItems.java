@@ -48,3 +48,5 @@ public class NewsItems {
         return authorName;
     }
 }
+
+

@@ -77,3 +77,4 @@ public class Fragment_two extends Fragment implements LoaderManager.LoaderCallba
         getLoaderManager().initLoader(number, null, this);
     }
 }
+

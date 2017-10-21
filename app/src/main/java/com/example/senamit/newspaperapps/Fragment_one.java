@@ -85,3 +85,4 @@ public class Fragment_one extends Fragment implements LoaderManager.LoaderCallba
         getLoaderManager().initLoader(number, null, this);
     }
 }
+
