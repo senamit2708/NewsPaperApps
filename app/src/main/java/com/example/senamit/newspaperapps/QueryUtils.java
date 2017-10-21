@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 /**
@@ -92,6 +93,9 @@ public class QueryUtils {
             newsUrl = jsonItemObject.optString("webUrl");
             newsPublishDate = jsonItemObject.optString("webPublicationDate");
             sectionName = jsonItemObject.optString("sectionName");
+
+//            DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy");
+
             newsItemsArrayList.add(new NewsItems(newsHeadline, newsUrl, newsPublishDate, sectionName));
         }
         return newsItemsArrayList;

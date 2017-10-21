@@ -1,5 +1,7 @@
 package com.example.senamit.newspaperapps;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.Nullable;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.view.Window;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,8 @@ public class Fragment_one extends Fragment implements LoaderManager.LoaderCallba
     private String ORDER_BY = "order-by";
     private Uri buildUri = null;
     private int number = 0;
+    ProgressDialog progress;
+    Dialog dialog;
 
     @Nullable
     @Override
@@ -46,7 +51,28 @@ public class Fragment_one extends Fragment implements LoaderManager.LoaderCallba
         recycerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recycerView.setHasFixedSize(true);
         context = getContext();
+
+        dialogShow();
+
+         dialog = new Dialog (getActivity());
+
+        dialog.requestWindowFeature (Window.FEATURE_NO_TITLE);
+        dialog.setContentView (R.layout.dialog_progress);
+        dialog.getWindow ().setBackgroundDrawableResource (android.R.color.transparent);
+        dialog.show();
+
+
         loaderRecycleNews();
+    }
+
+    private void dialogShow() {
+
+        dialog = new Dialog (getActivity());
+
+        dialog.requestWindowFeature (Window.FEATURE_NO_TITLE);
+        dialog.setContentView (R.layout.dialog_progress);
+        dialog.getWindow ().setBackgroundDrawableResource (android.R.color.transparent);
+        dialog.show();
     }
 
     @Override
@@ -58,11 +84,13 @@ public class Fragment_one extends Fragment implements LoaderManager.LoaderCallba
     public void onLoadFinished(Loader<List<NewsItems>> loader, List<NewsItems> newsItemsList) {
         RecyclerAdapter recyclerAdapter1 = new RecyclerAdapter(newsItemsList);
         recycerView.setAdapter(recyclerAdapter1);
+        dialog.dismiss();
     }
 
     @Override
     public void onLoaderReset(Loader<List<NewsItems>> loader) {
         recyclerAdapter = new RecyclerAdapter(new ArrayList<NewsItems>());
+
     }
 
     public void loaderRecycleNews() {

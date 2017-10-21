@@ -4,6 +4,7 @@ package com.example.senamit.newspaperapps;
 
 
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -26,11 +27,24 @@ import android.view.MenuInflater;
 import android.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-    public static final String LOG_TAG = MainActivity.class.getSimpleName();
-    public String name = "india";
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private TabLayout tabLayout;
     boolean connected = false;
-    Snackbar snackbar;
+    String name = null;
+
+//
+//    Sometimes you want close the entire application in certain back button press.
+//    Here best practice is open up the home window instead of exiting application.
+//    For that you need to override onBackPressed() method. usually this method open up the top activity in the stack.
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +74,19 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         }
         else {
+//            progreesDialog();
             setUpViewPager(viewPager);
         }
     }
+
+//    private void progreesDialog() {
+//
+//         progress = new ProgressDialog(this);
+//        progress.setTitle("Loading");
+//        progress.setMessage("Wait while loading...");
+//        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+//        progress.show();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(new Fragment_one(), "Sports");
         pagerAdapter.addFragment(new Fragment_two(), "Weather");
+//        pagerAdapter.addFragment(new Fragment_three(), "Politics");
         viewPager.setAdapter(pagerAdapter);
+//        progress.dismiss();
     }
 }

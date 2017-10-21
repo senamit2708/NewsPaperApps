@@ -1,5 +1,6 @@
 package com.example.senamit.newspaperapps;
 
+import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
     private String JSON_DATA = "https://content.guardianapis.com/search";
     RecyclerView recycerView;
     RecyclerAdapter recyclerAdapter;
+    Dialog dialog;
 
     @Override
     public void onBackPressed() {
@@ -59,12 +62,32 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
         recycerView.setLayoutManager(new LinearLayoutManager(this));
         recycerView.setHasFixedSize(true);
         loaderRecycleNews();
+       dialogShower();
 
 
 
 
 
     }
+
+    private void dialogShower() {
+
+        dialog = new Dialog (SearchResult.this);
+
+        dialog.requestWindowFeature (Window.FEATURE_NO_TITLE);
+        dialog.setContentView (R.layout.dialog_progress);
+        dialog.getWindow ().setBackgroundDrawableResource (android.R.color.transparent);
+        dialog.show();
+    }
+
+//    private void dialogShower() {
+//        dialog = new Dialog(SearchResult.this);
+//
+//        dialog.requestWindowFeature (Window.FEATURE_NO_TITLE);
+//        dialog.setContentView (R.layout.dialog_progress);
+//        dialog.getWindow ().setBackgroundDrawableResource (android.R.color.transparent);
+//        dialog.show();
+//    }
 
     public void loaderRecycleNews() {
         buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(APIKEY, KEY).build();
@@ -81,6 +104,7 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<List<NewsItems>> loader, List<NewsItems> newsItemsList) {
         RecyclerAdapter recyclerAdapter1 = new RecyclerAdapter(newsItemsList);
         recycerView.setAdapter(recyclerAdapter1);
+        dialog.dismiss();
     }
 
     @Override
