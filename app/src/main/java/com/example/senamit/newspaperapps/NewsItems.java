@@ -10,6 +10,7 @@ public class NewsItems {
     private String newsUrl;
     private String newsPublishDate;
     private String sectionName;
+    private String authorName;
 
 
     public NewsItems(String newsHeadline, String newsUrl, String newsPublishDate, String sectionName) {
@@ -17,7 +18,14 @@ public class NewsItems {
         this.newsUrl = newsUrl;
         this.newsPublishDate = newsPublishDate;
         this.sectionName = sectionName;
+    }
 
+    public NewsItems(String newsHeadline, String newsUrl, String newsPublishDate, String sectionName, String authorName) {
+        this.newsHeadline = newsHeadline;
+        this.newsUrl = newsUrl;
+        this.newsPublishDate = newsPublishDate;
+        this.sectionName = sectionName;
+        this.authorName = authorName;
     }
 
     public String getNewsHeadline() {
@@ -34,5 +42,9 @@ public class NewsItems {
 
     public String getSectionName() {
         return sectionName;
+    }
+
+    public String getAuthorName() {
+        return authorName;
     }
 }

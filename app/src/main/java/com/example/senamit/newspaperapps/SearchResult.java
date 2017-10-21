@@ -30,6 +30,7 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
     private String APIKEY = "api-key";
     private String KEY = "aef7f093-8dd8-48b2-94c7-4a2f0ec3005c";
     private String ORDER_BY = "order-by";
+    private String SHOW_TAGS = "show-tags";
     private Uri buildUri = null;
     private int number = 0;
     private static final String LOG_TAG = SearchResult.class.getSimpleName();
@@ -40,8 +41,7 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onBackPressed() {
-
-       Intent intent = new Intent(SearchResult.this, MainActivity.class);
+        Intent intent = new Intent(SearchResult.this, MainActivity.class);
         startActivity(intent);
         Log.i(LOG_TAG, "Inside back button");
     }
@@ -54,43 +54,26 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Intent intent = getIntent();
         name = intent.getStringExtra("key");
         recyclerAdapter = new RecyclerAdapter(new ArrayList<NewsItems>());
         recycerView = (RecyclerView) findViewById(R.id.recycler_view);
         recycerView.setLayoutManager(new LinearLayoutManager(this));
         recycerView.setHasFixedSize(true);
+        dialogShower();
         loaderRecycleNews();
-       dialogShower();
-
-
-
-
-
     }
 
     private void dialogShower() {
-
-        dialog = new Dialog (SearchResult.this);
-
-        dialog.requestWindowFeature (Window.FEATURE_NO_TITLE);
-        dialog.setContentView (R.layout.dialog_progress);
-        dialog.getWindow ().setBackgroundDrawableResource (android.R.color.transparent);
+        dialog = new Dialog(SearchResult.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_progress);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.show();
     }
 
-//    private void dialogShower() {
-//        dialog = new Dialog(SearchResult.this);
-//
-//        dialog.requestWindowFeature (Window.FEATURE_NO_TITLE);
-//        dialog.setContentView (R.layout.dialog_progress);
-//        dialog.getWindow ().setBackgroundDrawableResource (android.R.color.transparent);
-//        dialog.show();
-//    }
-
     public void loaderRecycleNews() {
-        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(APIKEY, KEY).build();
+        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(SHOW_TAGS,"contributor").appendQueryParameter(APIKEY, KEY).build();
         number++;
         getSupportLoaderManager().initLoader(number, null, this);
     }

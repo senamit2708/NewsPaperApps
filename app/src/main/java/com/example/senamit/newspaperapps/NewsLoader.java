@@ -35,11 +35,8 @@ public class NewsLoader extends AsyncTaskLoader {
         }
         List<NewsItems> newsItemsList = null;
         try {
-            Log.i(LOG_TAG,"inside load in background");
+            Log.i(LOG_TAG, "inside load in background");
             newsItemsList = QueryUtils.fetchNewsRequest(url);
-           if (newsItemsList==null){
-               return null;
-           }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

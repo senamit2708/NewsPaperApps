@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class Fragment_two extends Fragment implements LoaderManager.LoaderCallba
     private String APIKEY = "api-key";
     private String KEY = "aef7f093-8dd8-48b2-94c7-4a2f0ec3005c";
     private String ORDER_BY = "order-by";
+    private String SHOW_TAGS = "show-tags";
     Uri buildUri = null;
     private int number = 0;
 
@@ -69,7 +71,7 @@ public class Fragment_two extends Fragment implements LoaderManager.LoaderCallba
     }
 
     public void loaderRecycleNews() {
-        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(APIKEY, KEY).build();
+        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(SHOW_TAGS,"contributor").appendQueryParameter(APIKEY, KEY).build();
         number++;
         Log.i(LOG_TAG, "the builduri in fragment is  " + buildUri);
         getLoaderManager().initLoader(number, null, this);

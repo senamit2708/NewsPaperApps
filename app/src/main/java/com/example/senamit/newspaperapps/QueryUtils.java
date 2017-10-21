@@ -83,20 +83,32 @@ public class QueryUtils {
         String newsUrl = null;
         String newsPublishDate = null;
         String sectionName = null;
+        String firstName = null;
+        String lastName = null;
+        int tagNumber = 1;
         ArrayList<NewsItems> newsItemsArrayList = new ArrayList<NewsItems>();
         JSONObject basejsonObject = new JSONObject(jsonResponse);
         JSONObject jsonObjectResponse = basejsonObject.optJSONObject("response");
         JSONArray jsonArrayResults = jsonObjectResponse.optJSONArray("results");
         for (int i = 0; i < jsonArrayResults.length(); i++) {
             JSONObject jsonItemObject = jsonArrayResults.optJSONObject(i);
+            JSONArray jsonArrayTags = jsonItemObject.optJSONArray("tags");
+            for (int j = 0; j < jsonArrayTags.length(); j++) {
+                JSONObject jsonObjectTags = jsonArrayTags.optJSONObject(j);
+                firstName = jsonObjectTags.optString("firstName");
+                lastName = jsonObjectTags.optString("lastName");
+            }
             newsHeadline = jsonItemObject.optString("webTitle");
             newsUrl = jsonItemObject.optString("webUrl");
             newsPublishDate = jsonItemObject.optString("webPublicationDate");
             sectionName = jsonItemObject.optString("sectionName");
 
-//            DateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy");
 
-            newsItemsArrayList.add(new NewsItems(newsHeadline, newsUrl, newsPublishDate, sectionName));
+            if (firstName != null & lastName != null) {
+                newsItemsArrayList.add(new NewsItems(newsHeadline, newsUrl, newsPublishDate, sectionName, firstName + " " + lastName));
+            } else {
+                newsItemsArrayList.add(new NewsItems(newsHeadline, newsUrl, newsPublishDate, sectionName));
+            }
         }
         return newsItemsArrayList;
     }
@@ -107,9 +119,6 @@ public class QueryUtils {
         }
         URL url = CreateUrl(requestUrl);
         String jsonResponse = httpJsonArrayCreater(url);
-        if (jsonResponse==null){
-            return null;
-        }
         ArrayList<NewsItems> newsItemsArrayList = extractFeatureFromJson(jsonResponse);
         return newsItemsArrayList;
     }

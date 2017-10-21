@@ -40,6 +40,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final Uri link = Uri.parse(newsItemsList.get(position).getNewsUrl());
         holder.newsPublishDate.setText(newsItemsList.get(position).getNewsPublishDate());
         holder.sectionName.setText(newsItemsList.get(position).getSectionName());
+        holder.authorName.setText(newsItemsList.get(position).getAuthorName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +52,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-
         return newsItemsList.size();
     }
 
@@ -60,6 +60,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView newsUrl;
         TextView newsPublishDate;
         TextView sectionName;
+        TextView authorName;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -67,6 +68,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             newsUrl = itemView.findViewById(R.id.newsUrl);
             newsPublishDate = itemView.findViewById(R.id.newsPublishDate);
             sectionName = itemView.findViewById(R.id.sectionName);
+            authorName = itemView.findViewById(R.id.authorName);
             context = itemView.getContext();
             Log.i(LOG_TAG, "Inside viewholder constructo");
         }

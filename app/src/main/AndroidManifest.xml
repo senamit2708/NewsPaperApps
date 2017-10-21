@@ -36,4 +36,4 @@
         </activity>
     </application>
 
-</manifest> <!-- if the error comes in mainfest during build...just dont try to edit the debug mainfest as once u click on --><!-- error ..it will redirect to debug mainfest...so close it and do changes in androidmainfest pagge -->
+</manifest>

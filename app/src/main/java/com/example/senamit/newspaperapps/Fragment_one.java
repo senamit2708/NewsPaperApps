@@ -1,7 +1,6 @@
 package com.example.senamit.newspaperapps;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.Nullable;
@@ -32,6 +31,7 @@ public class Fragment_one extends Fragment implements LoaderManager.LoaderCallba
     private String APIKEY = "api-key";
     private String KEY = "aef7f093-8dd8-48b2-94c7-4a2f0ec3005c";
     private String ORDER_BY = "order-by";
+    private String SHOW_TAGS = "show-tags";
     private Uri buildUri = null;
     private int number = 0;
     Dialog dialog;
@@ -80,7 +80,7 @@ public class Fragment_one extends Fragment implements LoaderManager.LoaderCallba
     }
 
     public void loaderRecycleNews() {
-        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(APIKEY, KEY).build();
+        buildUri = Uri.parse(JSON_DATA).buildUpon().appendQueryParameter(QUERY, name).appendQueryParameter(ORDER_BY, "newest").appendQueryParameter(SHOW_TAGS,"contributor").appendQueryParameter(APIKEY, KEY).build();
         number++;
         getLoaderManager().initLoader(number, null, this);
     }
