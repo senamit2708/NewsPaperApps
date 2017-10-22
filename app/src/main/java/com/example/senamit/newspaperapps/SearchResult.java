@@ -104,6 +104,9 @@ public class SearchResult extends AppCompatActivity implements LoaderManager.Loa
         SearchView searchView = (SearchView) itemSearch.getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setSubmitButtonEnabled(true);
+        searchView.setIconifiedByDefault(false);
+        searchView.setFocusable(true);
+        searchView.setIconified(false);
         searchView.setOnQueryTextListener(this);
         return true;
     }

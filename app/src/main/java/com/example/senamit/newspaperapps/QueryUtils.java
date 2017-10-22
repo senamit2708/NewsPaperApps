@@ -15,7 +15,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by senamit on 7/10/17.
@@ -102,6 +105,8 @@ public class QueryUtils {
             newsUrl = jsonItemObject.optString("webUrl");
             newsPublishDate = jsonItemObject.optString("webPublicationDate");
             sectionName = jsonItemObject.optString("sectionName");
+
+
 
 
             if (firstName != null & lastName != null) {

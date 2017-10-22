@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -48,7 +49,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         SearchView searchView = (SearchView) itemSearch.getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setSubmitButtonEnabled(true);
+        searchView.setIconifiedByDefault(false);
+        searchView.setFocusable(true);
+        searchView.setIconified(false);
+
         searchView.setOnQueryTextListener(this);
+
         return true;
     }
 
